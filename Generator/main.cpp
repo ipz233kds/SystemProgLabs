@@ -77,10 +77,11 @@ int main() {
     std::cout << "Звільнення блокування..." << std::endl;
 
     ReleaseMutex(hMutex);
-    CloseHandle(hMutex);
 
     std::cout << "Генератор завершив роботу. Натисніть Enter для виходу." << std::endl;
     std::cin.get();
+
+    CloseHandle(hMutex);
     return 0;
 }
 
