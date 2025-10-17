@@ -119,22 +119,27 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
 
+        HBRUSH hGreenBrush = CreateSolidBrush(RGB(0, 180, 0));
+
+        HGDIOBJ hOldBrush = SelectObject(hdc, hGreenBrush);
+
+        SelectObject(hdc, GetStockObject(NULL_PEN));
+
         int yPos = 10;
-        wchar_t starBuffer[102];
 
         for (int i = 0; i < ARRAY_SIZE; ++i) {
-            int count = localData[i];
-            if (count > 100) count = 100;
+            int value = localData[i];
 
-            int j;
-            for (j = 0; j < count; ++j) {
-                starBuffer[j] = L'*';
-            }
-            starBuffer[j] = L'\0';
+            int stripWidth = value * 3;
 
-            TextOut(hdc, 10, yPos, starBuffer, j);
+            Rectangle(hdc, 10, yPos, 10 + stripWidth, yPos + 18);
+
             yPos += 20;
         }
+
+        SelectObject(hdc, hOldBrush);
+        DeleteObject(hGreenBrush);
+
 
         EndPaint(hWnd, &ps);
         break;
