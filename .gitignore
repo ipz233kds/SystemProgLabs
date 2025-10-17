@@ -1,0 +1,26 @@
+# Visual Studio
+*.sln.docstates
+*.suo
+*.user
+*.vcxproj.user
+*.vcxproj.filters
+*.ncb
+*.VC.db
+*.pdb
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+Win32/
+ipch/
+*.obj
+*.ilk
+*.pch
+*.idb
+*.tlog
+*.exe
+*.dll
+*.lib
+*.bin
+*.dat
